@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <script src="script.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>App Call</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+</head>
+
+<body style="background: white">
+        <div class="container">
+            <div class="calc-body" style="width: 383px !important;"> 
+              <div class="calc-button-row">
+                <!-- Tab Onglets  -->
+                  <div class="tab">
+                    <div class="button"  style="width: 33%;" >    <a class="tablinks"   style="width: 33%;" onclick="openOnglet(event, 'Onglet1')"><i style="color: aliceblue;"  class="fas fa-phone-alt"></i>  </a> </div>
+                    
+                    <div class="button"  style="width: 33%;" > <a class="tablinks"  style="width: 33%;" onclick="openOnglet(event, 'Onglet2')"><i style="color: aliceblue;" class="far fa-address-book"></i></a>    </div>
+                    
+                    <div class="button"  style="width: 33%;" > <a class="tablinks" onclick="openOnglet(event, 'Onglet3')"><i style="color: aliceblue;" class="fas fa-list"></i></a>   </div>
+
+                  </div>
+                </div>
+
+<!-- call Onglet -->
+
+              <div id="Onglet1" class="tabcontent">
+                    <div class="calc-screen">
+                      <div class="calc-typed"> 
+                        <form id="Form">
+                            <div class="form-group">
+                                <input style="width: 100%;  color: aliceblue !important; border: none !important; border-bottom: 3PX SOLID #FFF !important; background: #3a4655;" type="number" class="border border-primary form-control" id="Pnumber" placeholder="Number" />
+                            </div> 
+                              <div class="form-group">
+                                <input style="width: 100%;     border: none !important;  color: rgb(255, 255, 255);border-bottom: 3PX SOLID #FFF !important; background: #3a4655;" type="text" class="border border-primary form-control" id="name" placeholder="Name" />
+                            </div>
+                        <span class="blink-me">_</span></div>
+                    </div>
+                    <div class="calc-button-row">
+                      <div class="button" style="width: 50%;" > <button type="button" style="BACKGROUND: NONE;
+                        COLOR: aliceblue;
+                        BORDER: none;" id="callbtn" onclick="call()" data-toggle="modal" data-target="#Calling">Call</button></div>
+                      <div class="button" style="width: 50%;" >   <button type="submit" style="    BACKGROUND: NONE;
+                        COLOR: aliceblue;
+                        BORDER: none;"  id="PnumberBtn" onclick="save()" >Save</button>  </div>
+                    </div> 
+                  </form>
+                    <div class="calc-button-row"  id ="buttons">
+                      <div class="button" onclick="fillIt(7)">7</div>
+                      <div class="button" onclick="fillIt(8)">8</div>
+                      <div class="button" onclick="fillIt(9)">9</div>
+                      
+                    </div>
+                    <div class="calc-button-row"  id ="buttons">
+                      <div class="button" onclick="fillIt(4)">4</div>
+                      <div class="button" onclick="fillIt(5)">5</div>
+                      <div class="button" onclick="fillIt(6)">6</div>
+                     
+                    </div>
+                    <div class="calc-button-row"  id ="buttons">
+                      <div class="button" onclick="fillIt(1)" >1</div>
+                      <div class="button" onclick="fillIt(2)" >2</div>
+                      <div class="button"onclick="fillIt(3)" >3</div>
+                    
+                    </div>
+                   
+                    <div class="calc-button-row"  id ="buttons">
+                      <div class="button" class="button"onclick="fillIt(#)">#</div>
+                      <div class="button"class="button"onclick="fillIt(0)">0</div>
+                      <div class="button" class="button"onclick="fillIt(*)">*</div>
+                        </div>   
+                      </div>
+                      <!-- contact Onglet -->
+                       <div id="Onglet2" class="tabcontent">
+                      <a onclick="Conntact()" style="cursor: pointer;" ><h3 style="color: aliceblue; text-align: center;"> Contatcs <i class="fas fa-caret-down"></i> </h3></a>
+                      <div style="height: 11PX;"></div>
+                   <div id="conT" class="mt-5"   style="color: aliceblue;"> </div>   
+              </div>
+              <!-- list Call Onglet -->
+              <div id="Onglet3" class="tabcontent">
+                <a onclick="Histo()" style="cursor: pointer;" ><h3 style="color: aliceblue; text-align: center;"> Call Histories <i class="fas fa-caret-down"></i> </h3></a> 
+                <div style="height: 11PX;"></div>
+                <div id="CH" class="mt-5"   style="color: aliceblue;"> </div> 
+                  </div>
+              </div>
+            </div>
+              </div>
+            </div>
+
+            </div>
+
+              </div>
+
+            <!-- /////////popUp//////// -->
+            <div class="modal fade" id="Calling" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                      <form  action="" method="">
+        <div class="card">
+              <div class="call-animation">
+             <img class="img-circle" src="https://lte.ma/wp-content/uploads/2015/06/User-icon.png" alt="" width="auto"/>
+            </div><h5 class="modal-title">Calling ... </h5>
+             <div><p class="title" id="Info">   </p>
+              <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span> 
+</div>
+</form>
+                </div>
+            </div> </div>
+                  </div>
+                  </div>
+
+             <script>
+
+function blinker() {
+
+}
+setInterval(blinker, 500);
+let display = document.querySelector('form input '),
+    button = document.querySelectorAll('#buttons button');
+
+    function fillIt(num) {
+        display.value = display.value + num;
+    }
+    function clearIt() {
+        display.value = "";
+    }
+
+
+                function openOnglet(evt, Onglets) {
+                  var i, tabcontent, tablinks;
+                  tabcontent = document.getElementsByClassName("tabcontent");
+                  for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                  }
+                  tablinks = document.getElementsByClassName("tablinks");
+                  for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                  }
+                  document.getElementById(Onglets).style.display = "block";
+                  evt.currentTarget.className += " active";
+                }
+                </script>
+        <div class="container mt-5 "></div>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js "></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js "></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js "></script>
+        <script src="./app.js "></script>
+</body>
+
+</html>
