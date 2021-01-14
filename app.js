@@ -18,7 +18,7 @@ function save() {
   
 // check file
     if (fs.existsSync(path)) {
-    fs.appendFile(path  , " Name: "+  name + " <br> Number: " + number + "<br> ******<br>" + "\n"   , function(err) {
+    fs.appendFile(path  , " Name : "+name+";"+ " Number : "+number+";" +"*****"+";"+ "\n"  , function(err) {
       if (err) {
         console.log(err);
       } else {
@@ -45,8 +45,7 @@ const call = () => {
     // check file
   if (fs.existsSync(path)) {
     fs.appendFile(
-      path,
-      " Name: "+ name + "<br> Number: " + number + "<br> Date: " + dateStr +"<br> ******<br>" + "\n",
+      path," Name : "+name+";"+ " Number : "+number+";" +" Date : "+dateStr+";"+"*****"+";" + "\n",
       
       function (err) {
         if (err) {
@@ -76,14 +75,21 @@ const Histo = () => {
       alert("An error ocurred reading the file :" + err.message);
       return;
     }
+    var str_array = data.toString().split('/n');
+    var text ="";
+    var i ;
+    var j;
+       for( i = 0; i < str_array.length; i++) {
+        var cube = str_array[i];
+        console.log( data.split('/n')[i])
+        for( j = 0; j < cube.split(';').length; j++) {
+             console.log( cube.split(';')[j]);
+             text += cube.split(';')[j] + "<br>";
 
-    let histories = [];
-    histories.push(data);
-    // Change how to handle the file content
-    console.log("The file content is : " + data);
-    document.getElementById("CH").innerHTML = `
-    <p> ${data}  </p>  
-    `;
+    }
+    
+  }
+   document.getElementById("CH").innerHTML = text ;
   });
 };
 const Conntact = () => {
@@ -98,13 +104,24 @@ const Conntact = () => {
       return;
     }
 
-    let Conntt = [];
-    Conntt.push(dataF);
-    // Change how to handle the file content
-    console.log("The file content is : " + dataF);
-     document.getElementById("conT").innerHTML =  `
-     <p> ${dataF}  </p>     
-     ` ;
+    // let Conntt = [];
+    // Conntt.push(dataF);
+
+    var str_arrayF = dataF.toString().split('/n');
+    var textF ="";
+    var i ;
+    var j;
+       for( i = 0; i < str_arrayF.length; i++) {
+        var cubeF = str_arrayF[i];
+        console.log( dataF.split('/n')[i])
+        for( j = 0; j < cubeF.split(';').length; j++) {
+             console.log( cubeF.split(';')[j]);
+             textF += cubeF.split(';')[j] + "<br>";
+
+    }
+    
+  }
+   document.getElementById("conT").innerHTML = "<p>" +textF + "</p>" ;
   });
 };
 app.whenReady().then(createWindow);
